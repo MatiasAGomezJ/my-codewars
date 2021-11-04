@@ -1,5 +1,5 @@
 def loose_change(cantidad):
-    assert isinstance(cantidad, int)
+    assert isinstance(cantidad, int) or isinstance(cantidad, float)
     
     monedas = {'Quarters': 25,'Dimes': 10, 'Nickels': 5, 'Pennies': 1}
     cambio = monedas.copy()

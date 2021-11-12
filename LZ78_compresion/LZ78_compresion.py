@@ -1,36 +1,28 @@
-def conversor_dict_to_string(d):
-
-    assert isinstance(d, dict)
-
-    string = ""
-
-    for item in d:
-        string += str(item) + d[item]
-
-    return string
-
 def encoder(data):
 
     assert isinstance(data, str)
 
-    solucion = ""
+    solucion = ''
 
     strings = { 0 : ''} 
 
     contador_palbras_diferentes = 1
-    acumulador = ""
-    for char in data:
+    acumulador = ''
+    for i, char in enumerate(data):
         acumulador += char
         if acumulador not in strings.values():
             strings[contador_palbras_diferentes] = acumulador
-            solucion += "0" + str(acumulador[len(acumulador)-1])
-            acumulador = ""
+            solucion += str(list(strings.keys())[list(strings.values()).index(acumulador[:-1])]) + str(acumulador[len(acumulador)-1])
+            
+            
+            acumulador = ''
             contador_palbras_diferentes += 1
+            continue
 
-    solution = conversor_dict_to_string(strings)
+        if i == len(data) - 1:
+            solucion += str(list(strings.keys())[list(strings.values()).index(acumulador)])
 
     return solucion
-
 
 if __name__ == '__main__':
     assert encoder('ABAABABAABAB') == '0A0B1A2A4A4B'

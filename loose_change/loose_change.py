@@ -5,7 +5,8 @@ def loose_change(cantidad):
     cambio = monedas.copy()
     for moneda in cambio:
         cambio[moneda] = 0
-    
+    cambio = dict.fromkeys(monedas.keys(), 0)
+
     cantidad_restante = cantidad
     for moneda in monedas:
         while cantidad_restante - monedas[moneda] >= 0:
